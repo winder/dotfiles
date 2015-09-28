@@ -1,0 +1,11 @@
+[user]
+	email = wwinder.unh@gmail.com
+	name = Will Winder
+[core]
+	editor = vim
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+[push]
+	default = simple
+[diff]
+	external = /usr/local/bin/git-diff.sh
