@@ -404,6 +404,9 @@ for_window [class="Gitk"] floating enable
 for_window [class="Git-gui"] floating enable
 #border_radius 15
 
+# Jetbrains floating splash window
+#for_window [class="jetbrains-.*" title="win0"] floating enable border none move position center
+for_window [class="jetbrains-.*" title="win0"] floating enable border none
 
 # =========================== #
 # Apps on specific workspaces #
