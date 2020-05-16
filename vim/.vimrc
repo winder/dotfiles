@@ -1,5 +1,11 @@
 set nocp
-execute pathogen#infect()
+
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'preservim/nerdtree'
+Plug 'fatih/vim-go'
+call plug#end()
 
 " Disable mouse so that I can copy/paste from the terminal window.
 set mouse-=a
