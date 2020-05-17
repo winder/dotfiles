@@ -1,25 +1,25 @@
 /* global settings and color variables */
 * {
-   blue:             #81A1C1;
-   darkblue:         #5E81AC;
-   cyan:             #8FBCBB;
-   lightcyan:        #88C0D0;
-   green:            #A3BE8C;
-   red:              #BF616A;
+   blue:             #a6e1ff;
+   darkblue:         #B48EAD;
+   cyan:             #95e6cb;
+   lightcyan:        #B48EAD;
+   green:            #cee6ac;
+   red:              #ff6666;
 
-   dark1:            #2E3440;
-   dark2:            #3B4252;
-   dark3:            #434C5E;
-   dark4:            #4C566A;
+   dark1:            #1f2430;
+   dark2:            #292b30;
+   dark3:            #bfbab0;
+   dark4:            #bfbab0;
 
-   light1:           #D8DEE9;
+   light1:           #e6e1cf;
 
    background-color: @dark1;
    border-color:     @dark2;
    text-color:       @dark3;
-   dark-text-color:  @darkblue;
+   dark-text-color:  @dark4;
    main-color:       @blue;
-   highlight:        @cyan;
+   highlight:        @light1;
    urgent-color:     @red;
    selected-color:   @lightcyan;
 }
