@@ -77,7 +77,7 @@ bindsym $mod+Return exec /usr/bin/x-terminal-emulator
 ## Launch // Browser // <><Shift> Enter ##
 bindsym $mod+Shift+Return exec gtk-launch $(xdg-settings get default-web-browser)
 
-set_from_resource $rofiTheme rofi.theme /etc/regolith/styles/cahuella/rofi.rasi
+set_from_resource $rofiTheme rofi.theme /etc/regolith/styles/lascaille/rofi.rasi
 
 ## Launch // Application // <> Space ##
 set_from_resource $i3-wm.program.launcher.app i3-wm.program.launcher.app rofi -show drun -theme $rofiTheme
@@ -397,7 +397,7 @@ popup_during_fullscreen $i3-wm.gaps.popup_during_fullscreen
 
 # window focus follows your mouse movements as the mouse crosses window borders
 set_from_resource $i3-wm.gaps.focus_follows_mouse i3-wm.gaps.focus_follows_mouse no
-focus_follows_mouse no
+focus_follows_mouse $i3-wm.gaps.focus_follows_mouse
 
 ###############################################################################
 # i3 Colors and Fonts
@@ -532,10 +532,8 @@ exec --no-startup-id $i3-wm.program.3
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Gitk"] floating enable
 for_window [class="Git-gui"] floating enable
-#border_radius 15
 
 # Jetbrains floating splash window
-#for_window [class="jetbrains-.*" title="win0"] floating enable border none move position center
 for_window [class="jetbrains-.*" title="win0"] floating enable border none
 
 # =========================== #
@@ -544,9 +542,7 @@ for_window [class="jetbrains-.*" title="win0"] floating enable border none
 # Assign Workspaces:
 for_window[class="Slack"] move to workspace $ws4
 for_window[class="whatsapp-desktop"] move to workspace $ws4
-# (these only worked when opening the apps manually)
-#assign [class="Slack"] $ws4
-#assign [class="WhatsApp"] $ws4
 
 exec --no-startup-id i3-msg 'exec /usr/local/bin/WhatsApp'
 exec --no-startup-id i3-msg 'exec /usr/bin/slack'
+

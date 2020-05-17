@@ -1,0 +1,3 @@
+! -- This points to the root Xresource file.
+!#include "/home/will/.config/regolith/styles/root"
+#include "styles/root"
