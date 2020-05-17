@@ -545,4 +545,3 @@ for_window[class="whatsapp-desktop"] move to workspace $ws4
 
 exec --no-startup-id i3-msg 'exec /usr/local/bin/WhatsApp'
 exec --no-startup-id i3-msg 'exec /usr/bin/slack'
-
