@@ -1,3 +1,6 @@
 # Date Time
 [time]
-interval=10
+# This uses my forked version of i3xrocks which isn't released yet.
+# When it is upstream I can use Xresources instead of maintaining a conf.d dir
+#interval=xresource:i3xrocks.time.interval 10
+interval=1
