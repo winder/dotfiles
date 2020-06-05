@@ -9,6 +9,7 @@ Stow will use symlinks to install config files and directories.
 
 From the dotfile directory:
 ```
+stow shell
 stow git
 stow vim
 stow regolith
