@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+sudo mount -t cifs //192.168.2.62/algorand /media/NAS -o user=wwinder,uid=1000,gid=1000
