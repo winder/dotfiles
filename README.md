@@ -25,6 +25,13 @@ These are generally available via a package manager.
 * ripgrep
 * tree
 * git-gui
+* acpi (battery information)
+* cifs-utils (SMB drive mount)
+* qt5-default
+
+Regolith packages
+* i3xrocks-weather
+* i3xrocks-battery
 
 # Packages that I manually install on a new system
 
@@ -34,4 +41,6 @@ Slack
 GoLand
 IDEA
 Spotify
+SQuirreL SQL Client
+Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
 
