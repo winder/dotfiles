@@ -1,7 +1,15 @@
 # vim:set ft=sh et:
 
+# Remap capslock to control
+setxkbmap -layout us -option ctrl:nocaps
+
 # My scripts...
 export PATH=~/scripts:$PATH
+
+# Map similar tools to the one I prefer
+alias vi='nvim'
+alias vim='nvim'
+alias ag='rg'
 
 # Tell tools like git to use vim if it needs an editor.
 export VISUAL=vim
