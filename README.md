@@ -13,6 +13,7 @@ stow shell
 stow git
 stow vim
 stow regolith
+stow fish
 ```
 
 # Packages that I install on a new system
@@ -28,6 +29,8 @@ These are generally available via a package manager.
 * acpi (battery information)
 * cifs-utils (SMB drive mount)
 * qt5-default
+* fish
+* oh-my-fish - `curl -L https://get.oh-my.fish > install && fish install --path=~/.local/share/omf --config=~/.config/omf`
 
 Regolith packages
 * i3xrocks-weather
