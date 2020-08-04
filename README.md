@@ -31,6 +31,7 @@ These are generally available via a package manager.
 * qt5-default
 * fish
 * oh-my-fish - `curl -L https://get.oh-my.fish > install && fish install --path=~/.local/share/omf --config=~/.config/omf`
+* fzf / fish `omf install https://github.com/jethrokuan/fzf`
 
 Regolith packages
 * i3xrocks-weather
