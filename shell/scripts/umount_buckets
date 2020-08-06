@@ -1,0 +1,13 @@
+#!/usr/bin/env bash    
+cd ~/s3-buckets
+    
+sudo umount algorand-releases    
+sudo umount algorand-snapshots    
+sudo umount algorand-uploads    
+sudo umount algorand-builds    
+sudo umount algorand-internal    
+sudo umount algorand-staging    
+sudo umount testnet-latest    
+sudo umount algorand-devops-misc    
+sudo umount algorand-repository    
+sudo umount personal

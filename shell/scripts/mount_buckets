@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+mkdir -p ~/s3-buckets/{algorand-releases,algorand-snapshots,algorand-uploads,algorand-builds,algorand-internal,algorand-staging,testnet-latest,algorand-devops-misc,algorand-repository}
+
+# work
+s3fs algorand-releases ~/s3-buckets/algorand-releases -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs algorand-snapshots ~/s3-buckets/algorand-snapshots -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs algorand-uploads ~/s3-buckets/algorand-uploads -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs algorand-builds ~/s3-buckets/algorand-builds -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs algorand-internal ~/s3-buckets/algorand-internal -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs algorand-staging ~/s3-buckets/algorand-staging -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+s3fs testnet-latest ~/s3-buckets/testnet-latest -o passwd_file=${HOME}/.passwd-s3fs-testnet -o umask=0000
+s3fs testnet-latest ~/s3-buckets/algorand-devops-misc -o passwd_file=${HOME}/.passwd-s3fs-testnet -o umask=0000
+
+# SigmoidBell
+s3fs algorand-repository ~/s3-buckets/algorand-repository -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
+
+# My files
+s3fs winder-files ~/s3-buckets/personal -o passwd_file=${HOME}/.passwd-s3fs-personal -o umask=0000

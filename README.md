@@ -20,6 +20,7 @@ stow fish
 
 These are generally available via a package manager.
 * git
+* git-flow
 * fzf
 * oathtool
 * neovim
@@ -32,6 +33,7 @@ These are generally available via a package manager.
 * fish
 * oh-my-fish - `curl -L https://get.oh-my.fish > install && fish install --path=~/.local/share/omf --config=~/.config/omf`
 * fzf / fish `omf install https://github.com/jethrokuan/fzf`
+* s3fs
 
 Regolith packages
 * i3xrocks-weather
