@@ -1,10 +1,14 @@
-alias vi="nvim"
-alias vim="nvim"
-alias ag="rg"
+if status --is-interactive
+  set -g fish_user_abbreviations
+  abbr vi nvim
+  abbr vim nvim
+  abbr ag rg
 
-alias gosrc="cd ~/go/src/github.com/algorand/go-algorand/"
-alias src="cd ~/algorand/"
+  abbr gosrc 'cd ~/go/src/github.com/algorand/go-algorand/'
+  abbr src 'cd ~/algorand/'
+end
 
-set -x GOROOT /opt/go/go
-set -x GOPATH ~/go
-set -x PATH $PATH $GOROOT/bin $GOPATH/bin
+set -gx ALGORAND_DATA ~/.algorand
+set -gx GOROOT /opt/go/go
+set -gx GOPATH ~/go
+set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
