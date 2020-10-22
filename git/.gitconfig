@@ -5,5 +5,6 @@
 	editor = nvim
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
+	pt = !git tag -l | xargs git tag -d && git fetch -t
 [push]
 	default = simple
