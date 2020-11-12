@@ -2,7 +2,7 @@
 #include "/etc/regolith/styles/root"
 
 ! -- i3xrocks date format
-i3xrocks.date.format2: +%a, %b %_d %Y %I:%M:%S %p
+i3xrocks.date.format2: %a, %b %_d %Y %I:%M:%S %p
 i3xrocks.time.interval: 1
 
 ! -- overrides!
