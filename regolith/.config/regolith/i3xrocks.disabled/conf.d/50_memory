@@ -1,0 +1,6 @@
+# Memory
+[memory]
+interval=10
+#command=echo $(free -m | awk 'NR==2{printf "%.1fG", $3/1024 }')
+
+

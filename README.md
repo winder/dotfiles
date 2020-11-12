@@ -3,6 +3,9 @@
 This is needed before starting.
 * stow
 
+# Base OS
+Regolith 1.5
+
 # Installing dotfiles
 
 Stow will use symlinks to install config files and directories.

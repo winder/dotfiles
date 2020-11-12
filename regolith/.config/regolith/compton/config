@@ -41,6 +41,9 @@ glx-copy-from-front = false;
 glx-no-rebind-pixmap = true;
 use-damage = true;
 
+# On GLX backend, bad synchronization between X Render and GLX may lead to some sort of lagging effect (especially with nvidia-drivers). Use --xrender-sync-fence to deal with it.
+xrender-sync-fence = true;
+
 
 #################################
 #
@@ -97,8 +100,8 @@ shadow-ignore-shaped = false;
 #
 #################################
 
-inactive-opacity = 0.92;
-active-opacity = 0.97;
+inactive-opacity = 1;
+active-opacity = 1;
 frame-opacity = 1;
 inactive-opacity-override = false;
 
@@ -123,8 +126,10 @@ opacity-rule = [
     "100:class_g = 'Google-chrome'",
     "100:class_g = 'VLC'",
     "100:class_g ~= 'Drawful*'",
-    "100:class_g ~= 'jetbrains-*'"
-];
+    "100:class_g ~= 'jetbrains-*'",
+    "100:class_g ~= 'Slack'",
+    "100:class_g ~= 'vlc'"
+
 
 #################################
 #
