@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-mkdir -p ~/s3-buckets/{algorand-releases,algorand-snapshots,algorand-uploads,algorand-builds,algorand-internal,algorand-staging,testnet-latest,algorand-devops-misc,algorand-repository}
+mkdir -p ~/s3-buckets/{algorand-releases,algorand-snapshots,algorand-uploads,algorand-builds,algorand-internal,algorand-staging,testnet-latest,algorand-devops-misc,algorand-repository,personal}
 
 # work
 s3fs algorand-releases ~/s3-buckets/algorand-releases -o passwd_file=${HOME}/.passwd-s3fs -o umask=0000
