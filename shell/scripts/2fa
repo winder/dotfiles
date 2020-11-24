@@ -5,17 +5,23 @@ if [ -z $1 ]; then
     echo "Generate OATH TOTP Password"
     echo ""
     echo "Usage:"
-    echo "   $scriptname google"
+    echo "   $scriptname <service> -> compute passcode"
+    echo "   $scriptname list      -> list all known services"
     echo ""
     echo "Configuration: $HOME/.otpkeys"
     echo "Format: name:key"
-    echo 
+    echo
     echo "Preferably encrypt with gpg --armor to create .opkeys.asc"
     echo "and then delete .optkeys"
     echo ""
     echo "Optionally set OTPKEYS_PATH environment variable to GPG"
     echo "with path to GPG encrypted name:key file."
     exit
+fi
+
+if [ "$1" = "list" ]; then
+  cat ~/.otpkeys | cut -f 1 -d':'
+  exit
 fi
 
 if [ -z "$(which oathtool)" ]; then
@@ -42,17 +48,17 @@ if [ -z "$otpkeys_path" ]; then
     exit 1
 fi
 
-if [ "$otpkeys_path" = "$HOME/.otpkeys" ]; then 
+if [ "$otpkeys_path" = "$HOME/.otpkeys" ]; then
     #red='\033[0;31m'
     #NC='\033[0m' # No Color
-    
+
     #>&2 echo "${red}WARNING: unencrypted ~/.otpkeys"
     #>&2 echo "do: gpg --encrypt --recipient your-email --armor ~/.otpkeys"
     #>&2 echo "and then delete ~/.otpkeys"
     #>&2 echo "${NC}"
     otpkey=`grep ^$1 "$otpkeys_path" | cut -d":" -f 2 | sed "s/ //g"`
     #otpkey=`cat $otpkeys_path | grep "^$1:" | cut -d":" -f 2 | sed "s/ //g"`
-else 
+else
     otpkey=`gpg --batch --decrypt "$otpkeys_path" 2> /dev/null | grep "^$1:" | cut -d":" -f 2 | sed "s/ //g"`
     #otpkey=`cat $otpkeys_path | grep "^$1:" | cut -d":" -f 2 | sed "s/ //g"`
 fi
@@ -67,7 +73,8 @@ fi
 
 TOKEN=$(oathtool --totp -b "$otpkey")
 if [ -x "$(command -v xclip)" ]; then
-  echo $TOKEN | xclip -selection clipboard
+  echo $TOKEN
+  echo $TOKEN | (xclip -selection clipboard)
   echo "Copied to clipboard!"
 else
   echo $TOKEN

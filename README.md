@@ -26,6 +26,7 @@ These are generally available via a package manager.
 * git-flow
 * fzf
 * oathtool
+* xclip
 * neovim
 * ripgrep
 * tree
@@ -37,6 +38,9 @@ These are generally available via a package manager.
 * oh-my-fish - `curl -L https://get.oh-my.fish > install && fish install --path=~/.local/share/omf --config=~/.config/omf`
 * fzf / fish `omf install https://github.com/jethrokuan/fzf`
 * s3fs
+* caffeine - stop lock screen
+* libnotify-bin
+* dunst - notification popup
 
 Regolith packages
 * i3xrocks-weather
