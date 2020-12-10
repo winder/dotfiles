@@ -109,3 +109,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# To use the starship prompt...
+# eval "$(starship init bash)"

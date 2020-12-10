@@ -56,4 +56,5 @@ IDEA
 Spotify
 SQuirreL SQL Client
 Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
+scenstaro/rofi-calc - For `mod + equal` keybind. Needs to be manually built/installed - https://github.com/svenstaro/rofi-calc
 

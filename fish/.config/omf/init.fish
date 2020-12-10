@@ -34,3 +34,5 @@ set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
 set -gx JAVA_HOME /opt/java/jdk-15+36
 set -gx PATH $JAVA_HOME/bin $PATH
 
+# to use the starship prompt...
+# starship init fish | source
