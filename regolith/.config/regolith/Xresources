@@ -1,6 +1,9 @@
 ! -- This points to the root Xresource file.
 #include "/etc/regolith/styles/root"
 
+! -- Include my scripts in the rofi run program
+i3-wm.program.launcher.cmd: PATH="$HOME/scripts:$PATH" rofi -show run
+
 ! -- i3xrocks date format
 i3xrocks.date.format2: %a, %b %_d %Y %I:%M:%S %p
 i3xrocks.time.interval: 1
