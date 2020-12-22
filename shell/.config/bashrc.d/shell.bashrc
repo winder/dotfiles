@@ -111,3 +111,9 @@ fi
 
 # To use the starship prompt...
 # eval "$(starship init bash)"
+
+# FZF ctrl-R and ctrl-T
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Travis command
+[ ! -s /home/will/.travis/travis.sh ] || source /home/will/.travis/travis.sh

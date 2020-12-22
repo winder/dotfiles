@@ -14,5 +14,3 @@ for file in ~/.config/bashrc.d/*.bashrc; do
 done
 
 source ~/.secrets.bashrc
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
