@@ -1,5 +1,5 @@
 # Displays total percentage charge left of specified battery.
 [battery]
 interval=30
-percent_color=true
-instance=BAT0
+#percent_color=true
+#instance=BAT0
