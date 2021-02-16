@@ -41,6 +41,7 @@ These are generally available via a package manager.
 * caffeine - stop lock screen
 * libnotify-bin
 * dunst - notification popup
+* go
 
 Regolith packages
 * i3xrocks-weather
@@ -49,12 +50,12 @@ Regolith packages
 # Packages that I manually install on a new system
 
 These are propriatary, and package manager support is spotty at best.
-WhatsApp
-Slack
-GoLand
-IDEA
-Spotify
-SQuirreL SQL Client
-Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
-scenstaro/rofi-calc - For `mod + equal` keybind. Needs to be manually built/installed - https://github.com/svenstaro/rofi-calc
+* WhatsApp
+* Slack
+* GoLand
+* IDEA
+* Spotify
+* SQuirreL SQL Client
+* Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
+* scenstaro/rofi-calc - For `mod + equal` keybind. Needs to be manually built/installed - https://github.com/svenstaro/rofi-calc
 
