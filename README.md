@@ -17,6 +17,7 @@ stow git
 stow vim
 stow regolith
 stow fish
+stow flameshot
 ```
 
 # Packages that I install on a new system
@@ -42,6 +43,7 @@ These are generally available via a package manager.
 * libnotify-bin
 * dunst - notification popup
 * go
+* flameshot
 
 Regolith packages
 * i3xrocks-weather
