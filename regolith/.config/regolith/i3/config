@@ -672,6 +672,7 @@ exec --no-startup-id $i3-wm.program.3
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Gitk"] floating enable
 for_window [class="Git-gui"] floating enable
+for_window [class="Teensy"] floating enable
 
 # Jetbrains floating splash window
 for_window [class="jetbrains-.*" title="win0"] floating enable border none
@@ -692,3 +693,4 @@ exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
 # Special rofi calc keybind
 bindsym $mod + equal exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"
 
+bindsym Print exec "flameshot gui"
