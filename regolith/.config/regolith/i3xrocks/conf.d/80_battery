@@ -5,4 +5,4 @@
 # instance=BAT0
 [battery]
 interval=10
-#instance=BAT0
+instance=battery_BAT0
