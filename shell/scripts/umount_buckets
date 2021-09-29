@@ -10,4 +10,5 @@ sudo umount algorand-staging
 sudo umount testnet-latest    
 sudo umount algorand-devops-misc    
 sudo umount algorand-repository    
+sudo umount catchpoints
 sudo umount personal

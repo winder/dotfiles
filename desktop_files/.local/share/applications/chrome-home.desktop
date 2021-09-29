@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.1
+Type=Application
+Name=Chrome Home
+Icon=google-chrome
+Exec=google-chrome %u
+Actions=
+Categories=WebBrowser;X-GNOME-WebApplications;
+MimeType=text/html;text/xml;application/xhtml+xml;application/xml;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;x-scheme-handler/chrome;application/x-xpinstall;

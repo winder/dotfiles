@@ -703,3 +703,6 @@ exec --no-startup-id setxkbmap -layout us -option ctrl:nocaps
 bindsym $mod + equal exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"
 
 bindsym Print exec "flameshot gui"
+
+# Use xscreensaver for screen lock
+exec xscreensaver

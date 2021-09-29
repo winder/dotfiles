@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Joplin
+Comment=Joplin for Desktop
+Exec=/home/will/.joplin/Joplin.AppImage
+Icon=joplin
+StartupWMClass=Joplin
+Type=Application
+Categories=Office;
+#1.0.224.2334

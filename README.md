@@ -18,6 +18,7 @@ stow vim
 stow regolith
 stow fish
 stow flameshot
+stow desktop_files
 ```
 
 # Packages that I install on a new system
@@ -44,6 +45,8 @@ These are generally available via a package manager.
 * dunst - notification popup
 * go
 * flameshot
+* xscreensaver
+* xscreensaver-data-extra (for lcdscrub)
 
 Regolith packages
 * i3xrocks-weather
@@ -59,5 +62,9 @@ These are propriatary, and package manager support is spotty at best.
 * Spotify
 * SQuirreL SQL Client
 * Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
-* scenstaro/rofi-calc - For `mod + equal` keybind. Needs to be manually built/installed - https://github.com/svenstaro/rofi-calc
+* scenstaro/rofi-calc - For `mod + equal` keybind. Build from source:  https://github.com/svenstaro/rofi-calc
+* braus - Default browser for selecting the preferred profile. Build from source: https://braus.properlypurple.com/
+* OpenSCAD - see `desktop_files` for install location.
+* Slic3r - see `desktop_files` for install location.
+* Joplin - see `desktop_files` for install location.
 

@@ -36,3 +36,6 @@ i3-wm.gaps.smart: inverse_outer
 
 #define WORKSPACE_NAME_LABEL(LABEL, INDEX, FONT, COLOR, GLYPH) INDEX:<span font_desc=FONT> INDEX:LABEL </span><span foreground=COLOR>GLYPH</span>
 i3-wm.workspace.04.name: WORKSPACE_NAME_LABEL(Social,  4, glyph_font, QUOTE(color_green), glyph)
+
+!it should do this automatically, but just in case...
+i3-wm.program.lock: xscreensaver-command -lock

@@ -31,8 +31,11 @@ set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
 #set -gx JAVA_HOME /opt/java/jdk-12.0.2+10
 #set -gx JAVA_HOME /opt/java/jdk-13+33
 #set -gx JAVA_HOME /opt/java/adopt-openj9-14.0.2
-set -gx JAVA_HOME /opt/java/jdk-15+36
+#set -gx JAVA_HOME /opt/java/jdk-15+36
+set -gx JAVA_HOME /opt/java/jdk-16.0.2+7
 set -gx PATH $JAVA_HOME/bin $PATH
+
+set -gx PATH /opt/java/gradle-7.1.1/bin $JAVA_HOME/bin $PATH
 
 source ~/.secrets.fish
 # to use the starship prompt...
