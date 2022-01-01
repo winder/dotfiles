@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VIA
+Icon=/home/will/.local/share/applications/via.png
+Exec=/home/will/AppImages/via-1.3.1-linux.AppImage
+Comment=Keyboard configuration tool
+Terminal=false
+StartupWMClass=VIA
+Categories=utils;keboard
+Keywords=utils;keyboard
+X-AppImage-Version=1.3.1

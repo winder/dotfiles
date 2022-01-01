@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=0.4.1
+Type=Application
+Name=Vial
+Icon=/home/will/.local/share/applications/vial.png
+Exec=/home/will/AppImages/Vial-v0.4.1-x86_64.AppImage
+Comment=Keyboard configuration tool
+Terminal=false
+StartupWMClass=Vial
+Categories=utils;keboard
+Keywords=utils;keyboard
+X-AppImage-Version=0.3.1

@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=OpenSCAD
-Icon=/home/will/AppImages/openscad.svg
+Icon=/home/will/.local/share/applications/openscad.svg
 Exec=/home/will/AppImages/OpenSCAD.AppImage %f
 Comment=Programmatic 3d modeling
 Terminal=false

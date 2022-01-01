@@ -1,3 +1,4 @@
+package bass
 package https://github.com/jethrokuan/fzf
 theme bobthefish
 theme default

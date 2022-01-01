@@ -2,7 +2,7 @@
 Version=1.0
 Type=Application
 Name=Slic3r
-Icon=/home/will/AppImages/slic3r.png
+Icon=/home/will/.local/share/applications/slic3r.png
 Exec=/home/will/AppImages/Slic3r.AppImage %f
 Comment=STL slicer for 3D printers.
 Terminal=false

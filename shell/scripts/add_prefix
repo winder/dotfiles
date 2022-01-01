@@ -63,17 +63,17 @@ fi
 
 for f in "$@"; do
   REPLACEMENT="$PREFIX_RAW"
-  echo "LEN: ${#PREFIX[@]}"
 
   # If there are multiple parts, prompt for input
   if [[ "${#PREFIX[@]}" != "1" ]]; then
     DONE=0
     while [[ $DONE -eq 0 ]]; do
+      echo -e "\nRenaming '$f'."
       REPLACEMENT=""
       FIRST=1
       for part in "${PREFIX[@]}"; do
+        # read replacements after first prefix
         if [[ FIRST -eq 0 ]]; then
-          # read replacement
           echo -n "Enter replacement: "
           read USER_STRING </dev/tty
           REPLACEMENT=$REPLACEMENT$USER_STRING
@@ -83,7 +83,7 @@ for f in "$@"; do
         REPLACEMENT=$REPLACEMENT$part
       done
 
-      if ask "Add '$REPLACEMENT' to '$f'?" "Y"; then
+      if ask "Rename '$1' -> '$REPLACEMENT$1'?" "Y"; then
         DONE=1
       fi
     done

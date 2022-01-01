@@ -3,9 +3,13 @@
 	name = Will Winder
 [core]
 	editor = nvim
+	filemode = false
+	autocrlf = false
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%C(bold blue)<%an>%Creset' --abbrev-commit
 	pt = !git tag -l | xargs git tag -d && git fetch -t
 	root = rev-parse --show-toplevel
 [push]
 	default = simple
+[travis]
+	slug = algorand/go-algorand
