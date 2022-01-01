@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+
+# Usage: add_prefix 'prefix' [file-list]
+# If for each '?' in the prefix, user is prompted for a string replacement.
+
+# Interactive yes/no prompt
+function ask () {
+    # https://djm.me/ask
+    local prompt default reply
+
+    if [ "${2:-}" = "Y" ]; then
+        prompt="Y/n"
+        default=Y
+    elif [ "${2:-}" = "N" ]; then
+        prompt="y/N"
+        default=N
+    else
+        prompt="y/n"
+        default=
+    fi
+
+    while true; do
+
+        # Ask the question (not using "read -p" as it uses stderr not stdout)
+        echo -n "$1 [$prompt] "
+
+        # Read the answer (use /dev/tty in case stdin is redirected from somewhere else)
+        read reply </dev/tty
+
+        # Default?
+        if [ -z "$reply" ]; then
+            reply=$default
+        fi
+
+        # Check if the reply is valid
+        case "$reply" in
+            Y*|y*) return 0 ;;
+            N*|n*) return 1 ;;
+        esac
+
+    done
+}
+
+PREFIX_RAW="$1"
+IFS='?' read -ra PREFIX <<< "$1"
+shift
+
+# If the last char is a replacement, add empty string to array
+# to trigger the user replacement code.
+if [[ "$PREFIX_RAW" == *"?" ]]; then
+  PREFIX+=("")
+fi
+
+echo "File list:"
+for f in "$@"; do
+  echo "    $f"
+done
+
+if ! ask "Add prefix '$PREFIX_RAW' to files" "Y"; then
+  echo -e "\nExit without modifying files."
+  exit 1
+fi
+
+for f in "$@"; do
+  REPLACEMENT="$PREFIX_RAW"
+  echo "LEN: ${#PREFIX[@]}"
+
+  # If there are multiple parts, prompt for input
+  if [[ "${#PREFIX[@]}" != "1" ]]; then
+    DONE=0
+    while [[ $DONE -eq 0 ]]; do
+      REPLACEMENT=""
+      FIRST=1
+      for part in "${PREFIX[@]}"; do
+        if [[ FIRST -eq 0 ]]; then
+          # read replacement
+          echo -n "Enter replacement: "
+          read USER_STRING </dev/tty
+          REPLACEMENT=$REPLACEMENT$USER_STRING
+        fi
+        FIRST=0
+
+        REPLACEMENT=$REPLACEMENT$part
+      done
+
+      if ask "Add '$REPLACEMENT' to '$f'?" "Y"; then
+        DONE=1
+      fi
+    done
+  fi
+
+  mv "$f" "$REPLACEMENT$f"
+done
+
