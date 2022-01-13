@@ -2,7 +2,7 @@
 Encoding=UTF-8
 Name=Joplin
 Comment=Joplin for Desktop
-Exec=/home/will/.joplin/Joplin.AppImage
+Exec=/home/will/scripts/joplin
 Icon=joplin
 StartupWMClass=Joplin
 Type=Application
