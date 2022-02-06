@@ -24,6 +24,7 @@ stow regolith
 stow fish
 stow flameshot
 stow desktop_files
+stow screensaver
 ```
 
 # Packages that I install on a new system

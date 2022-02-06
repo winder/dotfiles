@@ -24,3 +24,4 @@ stow regolith
 stow fish
 stow flameshot
 stow desktop_files
+stow screensaver
