@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Cura
+Icon=/home/will/.local/share/applications/cura.png
+Exec=/home/will/AppImages/cura.AppImage %f
+Comment=STL slicer for 3D printers.
+Terminal=false
+StartupWMClass=cura
+MimeType=application/x-cura
+Categories=Graphics;3DGraphics;Engineering
+Keywords=3d;solid;geometry;csg;model;stl
