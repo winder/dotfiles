@@ -25,6 +25,7 @@ stow fish
 stow flameshot
 stow desktop_files
 stow screensaver
+stow 3d_printer
 ```
 
 # Packages that I install on a new system
