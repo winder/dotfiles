@@ -18,6 +18,9 @@ set -gx GOROOT /opt/go/go
 set -gx GOPATH ~/go
 set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
 
+# Add local binaries to path
+set -gx PATH $PATH ~/.local/bin/
+
 # java
 
 # graalvm
