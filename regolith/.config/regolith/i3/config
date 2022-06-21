@@ -678,6 +678,8 @@ exec --no-startup-id $i3-wm.program.3
 # =========== #
 # My Settings #
 # =========== #
+for_window [class=.*] border pixel $i3-wm.window.border.size
+
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="Gitk"] floating enable
 for_window [class="Git-gui"] floating enable
@@ -706,3 +708,4 @@ bindsym Print exec "flameshot gui"
 
 # Use xscreensaver for screen lock
 exec xscreensaver
+exec flameshot
