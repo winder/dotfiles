@@ -3,8 +3,10 @@ set nocp
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
-Plug 'preservim/nerdtree'
-Plug 'fatih/vim-go'
+"Plug 'preservim/nerdtree'
+Plug 'scrooloose/nerdtree'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Disable mouse so that I can copy/paste from the terminal window.
@@ -17,11 +19,11 @@ filetype plugin indent on
 " Vim-Go
 let g:go_fmt_command = "goimports"
 let g:go_disable_autoinstall = 0
-let g:go_highlight_functions = 1  
-let g:go_highlight_methods = 1  
-let g:go_highlight_structs = 1  
-let g:go_highlight_operators = 1  
-let g:go_highlight_build_constraints = 1  
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 let g:go_version_warning = 0 " prevent warning during git merges
 
 " airline
@@ -30,7 +32,7 @@ set t_Co=256
 let g:solarized_termcolors=256
 
 set background=dark
-" solarized options 
+" solarized options
 let g:solarized_visibility = "high"
 let g:solarized_contrast = "high"
 colorscheme solarized
@@ -49,12 +51,12 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-"let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
-let g:airline_left_sep = ''
+let g:airline_left_sep = ' '
+"let g:airline_left_sep = ''
 "let g:airline_right_sep = '«'
 "let g:airline_right_sep = '◀'
-let g:airline_right_sep = ''
+"let g:airline_right_sep = ''
+let g:airline_right_sep = ' '
 "let g:airline_symbols.linenr = '␊'
 "let g:airline_symbols.linenr = '␤'
 "let g:airline_symbols.linenr = '¶'
@@ -66,6 +68,14 @@ let g:airline_symbols.branch = ''
 "let g:airline_symbols.paste = '∥'
 "let g:airline_symbols.whitespace = 'Ξ'
 let g:airline_symbols.readonly = ''
+
+" from https://vim-bootstrap.com/
+"let g:airline_theme = 'powerlineish'
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline_skip_empty_sections = 1
 
 
 
@@ -95,6 +105,40 @@ cmap w!! %!sudo tee > /dev/null %
 " Don't use escape!!!
 :inoremap jk <esc>
 :inoremap <esc> <nop>
+
+" from https://vim-bootstrap.com/
+
+" Search mappings: These will make it so that going to the next one in a
+" search will center on the line it's found in.
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+if exists("*fugitive#statusline")
+  set statusline+=%{fugitive#statusline()}
+endif
+
+"" NERDTree configuration
+let g:NERDTreeChDirMode=2
+let g:NERDTreeIgnore=['node_modules','\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
+let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
+let g:NERDTreeShowBookmarks=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
+let g:NERDTreeWinSize = 50
+"map <C-z> :NERDTreeToggle<CR> " Toggle side window with `CTRL+z`.
+let g:NERDTreeDirArrowExpandable = '▸'
+let g:NERDTreeDirArrowCollapsible = '▾'
+let NERDTreeShowHidden=1 " Show hidden files
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite,*node_modules/
+nnoremap <silent> <F2> :NERDTreeFind<CR>
+nnoremap <silent> <F3> :NERDTreeToggle<CR>
+
+"*****************************************************************************
+"" Commands
+"*****************************************************************************
+" remove trailing whitespaces
+command! FixWhitespace :%s/\s\+$//e
+
 
 " Window swap macros courtesy of sgriffin
 " http://stackoverflow.com/questions/2586984/how-can-i-swap-positions-of-two-open-files-in-splits-in-vim
