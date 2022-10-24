@@ -7,6 +7,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
+Plug 'krivahtoo/silicon.nvim', { 'do': './install.sh', 'branch': 'main' }
 call plug#end()
 
 " Disable mouse so that I can copy/paste from the terminal window.
@@ -17,6 +18,14 @@ set clipboard=unnamedplus
 syntax on
 syntax enable
 filetype plugin indent on
+
+" Silicon
+lua << EOF
+require('silicon').setup({
+  font = 'JetBrainsMono-Regular Font=16',
+  theme = 'Monokai Extended',
+})
+EOF
 
 " Vim-Go
 let g:go_fmt_command = "goimports"
