@@ -24,6 +24,9 @@ lua << EOF
 require('silicon').setup({
   font = 'JetBrainsMono-Regular Font=16',
   theme = 'Monokai Extended',
+  window_controls = false,
+  pad_horiz = 30,
+  pad_vert = 40
 })
 EOF
 

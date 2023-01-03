@@ -40,6 +40,9 @@ set -gx PATH $JAVA_HOME/bin $PATH
 
 set -gx PATH /opt/java/gradle-7.1.1/bin $JAVA_HOME/bin $PATH
 
+# Add rust binaries
+set -gx PATH $HOME/.cargo/bin $PATH
+
 source ~/.secrets.fish
 # to use the starship prompt...
 # starship init fish | source

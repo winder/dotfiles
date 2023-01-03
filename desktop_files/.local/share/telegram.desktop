@@ -1,0 +1,18 @@
+#!/usr/bin/env xdg-open
+
+# note: Telegram creates its own desktop file on startup
+# so this isn't needed after the first time.
+[Desktop Entry]
+Name=Telegram
+GenericName=Telegram
+Comment=Telegram desktop
+Exec=/home/will/AppImages/Telegram/Telegram
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/plain;
+Icon=/home/will/.local/share/applications/telegram.jpg
+Categories=Network;Application;
+Keywords=Telegram
+X-Ubuntu-Gettext-Domain=Telegram
+StartupWMClass=telegram.app

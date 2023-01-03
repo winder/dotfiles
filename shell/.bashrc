@@ -14,3 +14,4 @@ for file in ~/.config/bashrc.d/*.bashrc; do
 done
 
 source ~/.secrets.bashrc
+. "$HOME/.cargo/env"
