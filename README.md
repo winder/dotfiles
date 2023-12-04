@@ -4,7 +4,8 @@ This is needed before starting.
 * stow
 
 # Base OS
-Regolith 1.6
+~~Regolith 1.6~~
+Pop OS
 
 # First Start
 
@@ -32,22 +33,17 @@ stow 3d_printer
 
 These are generally available via a package manager.
 * git
-* git-flow
 * fzf
 * oathtool
 * xclip
 * neovim
 * ripgrep
 * tree
-* git-gui
-* acpi (battery information)
 * cifs-utils (SMB drive mount)
-* qt5-default
 * fish
 * s3fs
 * caffeine - stop lock screen
 * libnotify-bin
-* dunst - notification popup
 * go
 * flameshot
 * xscreensaver
@@ -72,7 +68,6 @@ These are propriatary, and package manager support is spotty at best.
 * [DBeaver SQL Client]()
 * Docker / Docker Compose - Seems like it's usually best to avoid the built-in packages
 * scenstaro/rofi-calc - For `mod + equal` keybind. Build from source:  https://github.com/svenstaro/rofi-calc
-* braus - Default browser for selecting the preferred profile. Build from source: https://braus.properlypurple.com/
 * OpenSCAD - see `desktop_files` for install location.
 * Slic3r - see `desktop_files` for install location.
 * Joplin - see `desktop_files` for install location.
@@ -82,3 +77,7 @@ These are propriatary, and package manager support is spotty at best.
 Configure Joplin (or copy `~/./config/joplin-desktop` from old machine.
 Configure Slic3r (or copy `~/.Slic3r` from old machine.
 Install Goland / IDEA desktop files (gear icon in launchers).
+
+# Web browser
+
+Install xBrowserSync plugin and configure.

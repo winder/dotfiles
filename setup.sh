@@ -1,3 +1,7 @@
+set -e
+
+sudo add-apt-repository ppa:yubico/stable
+
 # install packages
 sudo apt-get install \
   acpi \
@@ -13,9 +17,6 @@ sudo apt-get install \
   git \
   git-gui \
   gnupg \
-  i3xrocks-battery \
-  i3xrocks-weather \
-  libappindicator3-1 \
   libnotify-bin \
   libtool \
   lsb-release \
@@ -27,19 +28,38 @@ sudo apt-get install \
   qalc \
   ripgrep \
   rofi-dev \
-  s4fs \
+  s3fs \
   stow \
   software-properties-common \
   tree \
   wget \
   xclip \
   xscreensaver \
-  xscreensaver-data-extra
+  xscreensaver-data-extra \
+  fonts-jetbrains-mono \
+  fonts-font-awesome \
+  fonts-inconsolata \
+  feh \
+  alacritty \
+  haskell-stack \
+  rofi \
+  arandr \
+  pasystray \
+  pavucontrol \
+  libpam-yubico \
+  libpam-u2f \
+  vlc \
+  google-chrome-stable
+
+  #libappindicator3-1 \
+  #i3xrocks-battery \
+  #i3xrocks-weather \
 
 # install oh my fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
 fish install --path=~/.local/share/omf --config=~/.config/omf
 omf install https://github.com/jethrokuan/fzf
+omf install bobthefish
 
 # change shell
 echo "Changing shell to 'fish'"
@@ -55,7 +75,7 @@ mv ../.local/share/applications ../backup
 stow shell
 stow git
 stow vim
-stow regolith
+#stow regolith
 stow fish
 stow flameshot
 stow desktop_files
