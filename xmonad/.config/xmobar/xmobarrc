@@ -1,0 +1,47 @@
+Config {
+       overrideRedirect = False,
+       allDesktops = True,
+       font     = "xft:JetBrains Mono Medium:weight=bold:size=13:antialias=true:hinting=true",
+       additionalFonts = ["xft:FontAwesome:size=13:antialias=true:hinting=true"],
+       bgColor  = "#002b36",
+       fgColor  = "#839496",
+       position = BottomW L 90,
+       commands = [
+          Run Weather "EGPF"
+                        [ "--template", "<weather> <tempC>°C"
+                        , "-L", "0"
+                        , "-H", "25"
+                        , "--low"   , "lightblue"
+                        , "--normal", "#f8f8f2"
+                        , "--high"  , "red"
+                        ] 36000,
+          Run Cpu
+                        [ "-L", "3"
+                        , "-H", "50"
+                        , "--high"  , "red"
+                        , "--normal", "green"
+                        ] 10,
+          Run Alsa "default" "Master"
+                        [ "--template", "<volumestatus>"
+                        , "--suffix"  , "True"
+                        , "--"
+                        , "--on", ""
+                        ],
+          Run Memory ["--template", "Mem: <usedratio>%"] 10,
+          Run Swap [] 10,
+          Run Date "%a %Y-%m-%d <fc=#8be9fd>%l:%M:%S %p</fc>" "date" 10,
+          Run XMonadLog,
+          Run BatteryP ["BAT0"]
+               ["-t", "<acstatus><watts> (<left>%)",
+                "-L", "10", "-H", "80", "-p", "3",
+                "--", "-O", "<fc=green>On</fc> - ", "-i", "",
+                "-L", "-15", "-H", "-5",
+                "-l", "red", "-m", "blue", "-h", "green",
+                "-a", "notify-send -u critical 'Battery running out!!'",
+                "-A", "3"]
+               600
+       ],
+       sepChar  = "%",
+       alignSep = "}{",
+       template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %battery% | %EGPF% | %date% "
+}
