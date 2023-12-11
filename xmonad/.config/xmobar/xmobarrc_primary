@@ -7,6 +7,7 @@ Config {
        fgColor  = "#839496",
        position = BottomW L 90,
        commands = [
+          Run XPropertyLog "_XMONAD_LOG_1",
           Run Weather "EGPF"
                         [ "--template", "<weather> <tempC>°C"
                         , "-L", "0"
@@ -30,7 +31,6 @@ Config {
           Run Memory ["--template", "Mem: <usedratio>%"] 10,
           Run Swap [] 10,
           Run Date "%a %Y-%m-%d <fc=#8be9fd>%l:%M:%S %p</fc>" "date" 10,
-          Run XMonadLog,
           Run BatteryP ["BAT0"]
                ["-t", "<acstatus><watts> (<left>%)",
                 "-L", "10", "-H", "80", "-p", "3",
@@ -43,5 +43,5 @@ Config {
        ],
        sepChar  = "%",
        alignSep = "}{",
-       template = "%XMonadLog% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %battery% | %EGPF% | %date% "
+       template = " %_XMONAD_LOG_1% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %battery% | %EGPF% | %date% "
 }

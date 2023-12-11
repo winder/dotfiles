@@ -45,7 +45,8 @@ main :: IO ()
 main = xmonad
      . ewmhFullscreen
      . ewmh
-     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+--     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
+     . dynamicEasySBs barSpawner 
      $ myConfig
 
 myConfig = def
@@ -110,12 +111,26 @@ myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled ||| Full)
     ratio    = 3/4    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
 
+-----------------
+-- Status Bars --
+-----------------
+
+-- xmobarTop    = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myXmobarPP)
+xmobarPrimary = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc_primary" (pure myXmobarPP)
+xmobarOthers  = statusBarPropTo "_XMONAD_LOG_2" "xmobar -x 1 ~/.config/xmobar/xmobarrc_others" (pure myXmobarPP)
+
+barSpawner :: ScreenId -> IO StatusBarConfig
+barSpawner 0 = pure $ xmobarPrimary -- two bars on the main screen
+barSpawner _ = pure $ xmobarOthers
+-- barSpawner _ = mempty -- nothing on the rest of the screens
+
 myXmobarPP :: PP
 myXmobarPP = def
     { ppSep             = magenta " • "
     , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
-    , ppHidden          = white . wrap " " ""
+    , ppCurrent         = wrap "" "" . xmobarBorder "Full" "yellow" 2 . wrap " " " "
+    , ppVisible         = wrap "" "" . xmobarBorder "Full" "lowWhite" 2 . wrap " " " "
+    , ppHidden          = lowWhite . wrap " " " "
     --, ppHiddenNoWindows = lowWhite . wrap " " ""
     , ppUrgent          = red . wrap (yellow "!") (yellow "!")
     , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
@@ -138,10 +153,37 @@ myXmobarPP = def
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
 
+myXmobarOtherPP :: PP
+myXmobarOtherPP = def
+    { ppSep             = magenta " • "
+    , ppTitleSanitize   = xmobarStrip
+    , ppCurrent         = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
+    , ppHidden          = white . wrap " " ""
+    --, ppHiddenNoWindows = lowWhite . wrap " " ""
+    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
+    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
+    , ppExtras          = [logTitles formatFocused formatUnfocused]
+    }
+  where
+    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
+    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
+
+    -- | Windows should have *some* title, which should not not exceed a
+    -- sane length.
+    ppWindow :: String -> String
+    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
+
+    blue, lowWhite, magenta, red, white, yellow :: String -> String
+    magenta  = xmobarColor "#0f79c6" ""
+    blue     = xmobarColor "#0d93f9" ""
+    white    = xmobarColor "#08f8f2" ""
+    yellow   = xmobarColor "#01fa8c" ""
+    red      = xmobarColor "#0f5555" ""
+    lowWhite = xmobarColor "#0bbbbb" ""
+
 -------------------------
 -- Utilities           --
 -------------------------
-
 --
 -- Floating window stuff
 --

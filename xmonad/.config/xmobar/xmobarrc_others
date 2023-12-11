@@ -5,11 +5,11 @@ Config {
        additionalFonts = ["xft:FontAwesome:size=13:antialias=true:hinting=true"],
        bgColor  = "#002b36",
        fgColor  = "#839496",
-       position = BottomW,
+       position = BottomW L 100,
        commands = [
-          Run XMonadLog,
+          Run XPropertyLog "_XMONAD_LOG_2"
        ],
        sepChar  = "%",
        alignSep = "}{",
-       template = "%XMonadLog% }{ %date% "
+       template = " %_XMONAD_LOG_2% }{ %date% "
 }
