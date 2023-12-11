@@ -1,6 +1,7 @@
 set -e
 
 sudo add-apt-repository ppa:yubico/stable
+sudo apt update
 
 # install packages
 sudo apt-get install \
@@ -46,8 +47,6 @@ sudo apt-get install \
   arandr \
   pasystray \
   pavucontrol \
-  libpam-yubico \
-  libpam-u2f \
   vlc \
   google-chrome-stable
 
@@ -55,12 +54,21 @@ sudo apt-get install \
   #i3xrocks-battery \
   #i3xrocks-weather \
 
+# yubikey // rustica agent // signed commits // rust
+sudo apt install \
+  libpcsclite-dev \
+  libudev-dev \
+  libpam-yubico \
+  libpam-u2f \
+  cargo \
+  protobuf-compiler
+
 # install oh my fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
 fish install --path=~/.local/share/omf --config=~/.config/omf
 omf install https://github.com/jethrokuan/fzf
 omf install bobthefish
-
+omf install nvm # node version manager
 # change shell
 echo "Changing shell to 'fish'"
 chsh -s /usr/bin/fish
@@ -132,3 +140,14 @@ sudo udevadm control --reload-rules
 sudo udevadm trigger
 sudo usermod -a -G dialout $USER
 sudo usermod -a -G plugdev $USER
+
+# Install rustica
+cd /opt
+git clone https://git@github.com/obelisk/rustica
+cd rusutica
+git checkout develop
+make cli
+make gui
+sudo cp target/release/rustica-agent-cli /usr/local/bin/
+sudo cp target/release/rustica-agent-gui /usr/local/bin/
+

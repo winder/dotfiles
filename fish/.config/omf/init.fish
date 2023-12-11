@@ -3,9 +3,7 @@ if status --is-interactive
   abbr vi nvim
   abbr vim nvim
   abbr ag rg
-
-  abbr gosrc 'cd ~/go/src/github.com/algorand/go-algorand/'
-  abbr src 'cd ~/algorand/'
+  abbr src 'cd ~/chainlink/'
 end
 
 set -g theme_date_timezone America/New_York
@@ -13,8 +11,7 @@ set -g theme_date_timezone America/New_York
 set -gx PATH $PATH /opt/java/jdk-13+33/bin
 set -gx PATH $PATH ~/scripts
 
-set -gx ALGORAND_DATA ~/.algorand
-set -gx GOROOT /opt/go/go
+set -gx GOROOT /opt/go/cur
 set -gx GOPATH ~/go
 set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
 
@@ -46,3 +43,7 @@ set -gx PATH $HOME/.cargo/bin $PATH
 source ~/.secrets.fish
 # to use the starship prompt...
 # starship init fish | source
+
+set -gx PATH $PATH /opt/goland/cur/bin
+
+set -gx SSH_AUTH_SOCK /tmp/rustica.socket
