@@ -2,6 +2,8 @@ import XMonad
 
 import System.Exit (exitSuccess)
 
+import XMonad.Actions.CycleWS (nextScreen, prevScreen, swapNextScreen, swapPrevScreen)
+
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.ManageHelpers
@@ -16,6 +18,7 @@ import XMonad.Layout.ToggleLayouts (ToggleLayout(..), toggleLayouts)
 import XMonad.Layout.NoBorders (noBorders, smartBorders) -- for fullscreen
 import XMonad.Layout.Spacing (spacingRaw, smartSpacing, Border(..))
 import XMonad.Layout.Reflect (reflectHoriz)
+import XMonad.Layout.IndependentScreens
 
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -38,6 +41,9 @@ myModMask = mod4Mask -- super
 myBorder :: Border
 myBorder = (Border 5 5 5 5)
 
+myWorkspaces :: [[Char]]
+myWorkspaces = [ "1", "2", "3", "4", "5", "6", "7", "8", "9" ]
+
 ----------------
 -- entrypoint --
 ----------------
@@ -46,13 +52,16 @@ main = xmonad
      . ewmhFullscreen
      . ewmh
 --     . withEasySB (statusBarProp "xmobar" (pure myXmobarPP)) defToggleStrutsKey
-     . dynamicEasySBs barSpawner 
+     . dynamicEasySBs myStatusBarSpawner
+     . docks
      $ myConfig
 
 myConfig = def
     { modMask    = myModMask    -- Rebind Mod
     , layoutHook = myLayout     -- Use custom layouts
     , manageHook = myManageHook -- Match on certain windows
+    , workspaces = withScreens 2 myWorkspaces
+    , keys       = myKeys
 
     , focusFollowsMouse = False -- Whether focusu follows the mouse pointer.
     , clickJustFocuses = False  -- Pass the initial click through to the window.
@@ -67,7 +76,7 @@ myConfig = def
 myKeybinds :: [(String, X ())]
 myKeybinds =
     -- XMonad
-    [ ("M-S-r", spawn "xmonad --recompile; xmonad --restart")
+    [ ("M-q", spawn "xmonad --recompile; xmonad --restart")
 
     -- System
     , ("M-<Escape>", spawn "xscreensaver-command -lock" ) -- lock screen
@@ -87,6 +96,13 @@ myKeybinds =
     , ("M-j", windows W.focusDown)
     , ("M-k", windows W.focusUp)
 
+    -- Screens
+    , ("M-w", prevScreen)
+    , ("M-e", nextScreen)
+    , ("M-r", nextScreen)
+    , ("M-S-w", swapPrevScreen)
+    , ("M-S-r", swapNextScreen)
+
     -- Toggle float
     , ("M-S-f", toggleFloat)
 
@@ -95,9 +111,22 @@ myKeybinds =
     , ("M-l", sendMessage Expand)
     ]
 
+-----------------------
+-- Multiple Monitors --
+-----------------------
+-- Change workspace script using independent monitors
+myKeys :: XConfig l -> M.Map (KeyMask, KeySym) (X ())
+myKeys conf@XConfig {XMonad.modMask = modm} = M.fromList $
+ [((m .|. modm, k), windows $ onCurrentScreen f i)
+ | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
+ , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+ ]
+
 myManageHook :: ManageHook
 myManageHook = composeAll
     [ className =? "Gimp" --> doFloat
+    , className =? "Peek" --> doFloat
+    , className =? "Gnome-calculator" --> doFloat
     , isDialog            --> doFloat
     , manageDocks
     ]
@@ -108,7 +137,7 @@ myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled ||| Full)
   where
     tiled    = reflectHoriz $ Tall nmaster delta ratio
     nmaster  = 1      -- Default number of windows in the master pane
-    ratio    = 3/4    -- Default proportion of screen occupied by master pane
+    ratio    = 1/2    -- Default proportion of screen occupied by master pane
     delta    = 3/100  -- Percent of screen to increment by when resizing panes
 
 -----------------
@@ -116,16 +145,22 @@ myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled ||| Full)
 -----------------
 
 -- xmobarTop    = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myXmobarPP)
-xmobarPrimary = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc_primary" (pure myXmobarPP)
-xmobarOthers  = statusBarPropTo "_XMONAD_LOG_2" "xmobar -x 1 ~/.config/xmobar/xmobarrc_others" (pure myXmobarPP)
-
-barSpawner :: ScreenId -> IO StatusBarConfig
-barSpawner 0 = pure $ xmobarPrimary -- two bars on the main screen
-barSpawner _ = pure $ xmobarOthers
+--xmobarPrimary = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc_primary" (pure $ myXmobarPP (0))
+--xmobarOthers  = statusBarPropTo "_XMONAD_LOG_2" "xmobar -x 1 ~/.config/xmobar/xmobarrc_others" (pure $ myXmobarPP (1))
+--
+--barSpawner :: ScreenId -> IO StatusBarConfig
+--barSpawner 0 = pure $ xmobarPrimary -- two bars on the main screen
+--barSpawner _ = pure $ xmobarOthers
 -- barSpawner _ = mempty -- nothing on the rest of the screens
 
-myXmobarPP :: PP
-myXmobarPP = def
+myStatusBarSpawner :: Applicative f => ScreenId -> f StatusBarConfig
+myStatusBarSpawner (S s) = do
+                    pure $ statusBarPropTo ("_XMONAD_LOG_" ++ show s)
+                          ("xmobar -x " ++ show s ++ " ~/.config/xmobar/xmobarrc_" ++ show s)
+                          (pure $ myXmobarPP (S s))
+
+myXmobarPP :: ScreenId -> PP
+myXmobarPP s = marshallPP s $ def
     { ppSep             = magenta " • "
     , ppTitleSanitize   = xmobarStrip
     , ppCurrent         = wrap "" "" . xmobarBorder "Full" "yellow" 2 . wrap " " " "
