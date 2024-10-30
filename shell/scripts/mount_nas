@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-sudo mount -t cifs //192.168.2.62/algorand /media/NAS -o vers=3.0,user=wwinder,uid=1000,gid=1000
-sudo mount -t cifs //192.168.2.62/Important /media/NAS_IMPORTANT -o vers=3.0,user=wwinder,uid=1000,gid=1000
-sudo mount -t cifs //192.168.2.62/Media /media/NAS_MEDIA -o vers=3.0,user=wwinder,uid=1000,gid=1000
+sudo mount -t cifs //192.168.2.222/algorand /media/NAS -o vers=3.0,user=wwinder,uid=1000,gid=1000
+sudo mount -t cifs //192.168.2.222/Important /media/NAS_IMPORTANT -o vers=3.0,user=wwinder,uid=1000,gid=1000
+sudo mount -t cifs //192.168.2.222/Media /media/NAS_MEDIA -o vers=3.0,user=wwinder,uid=1000,gid=1000

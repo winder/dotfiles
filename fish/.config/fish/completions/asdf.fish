@@ -1,0 +1,1 @@
+/home/wwinder/.asdf/completions/asdf.fish

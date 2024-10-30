@@ -151,3 +151,14 @@ make gui
 sudo cp target/release/rustica-agent-cli /usr/local/bin/
 sudo cp target/release/rustica-agent-gui /usr/local/bin/
 
+# Install spotify
+curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+sudo apt-get update && sudo apt-get install spotify-client
+
+# Latest version of git
+sudo add-apt-repository ppa:git-core/ppa -y
+sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com A1715D88E1DF1F24 40976EAF437D05B5 3B4FE6ACC0B21F32 A6616109451BBBF2
+sudo apt-get update
+sudo apt-get install git -y
+git --version

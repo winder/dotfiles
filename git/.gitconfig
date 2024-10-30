@@ -11,5 +11,6 @@
 	root = rev-parse --show-toplevel
 [push]
 	default = simple
+	autoSetupRemote = true
 [travis]
 	slug = algorand/go-algorand

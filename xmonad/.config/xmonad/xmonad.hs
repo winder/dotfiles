@@ -2,7 +2,7 @@ import XMonad
 
 import System.Exit (exitSuccess)
 
-import XMonad.Actions.CycleWS (nextScreen, prevScreen, swapNextScreen, swapPrevScreen)
+import XMonad.Actions.CycleWS (nextScreen, prevScreen, shiftNextScreen, shiftPrevScreen)
 
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks
@@ -57,11 +57,12 @@ main = xmonad
      $ myConfig
 
 myConfig = def
-    { modMask    = myModMask    -- Rebind Mod
-    , layoutHook = myLayout     -- Use custom layouts
-    , manageHook = myManageHook -- Match on certain windows
-    , workspaces = withScreens 2 myWorkspaces
-    , keys       = myKeys
+    { modMask       = myModMask    -- Rebind Mod
+    , layoutHook    = myLayout     -- Use custom layouts
+    , manageHook    = myManageHook -- Match on certain windows
+    , workspaces    = withScreens 2 myWorkspaces
+    , keys          = myKeys
+    --, mouseBindings = myMouseBindings
 
     , focusFollowsMouse = False -- Whether focusu follows the mouse pointer.
     , clickJustFocuses = False  -- Pass the initial click through to the window.
@@ -100,8 +101,8 @@ myKeybinds =
     , ("M-w", prevScreen)
     , ("M-e", nextScreen)
     , ("M-r", nextScreen)
-    , ("M-S-w", swapPrevScreen)
-    , ("M-S-r", swapNextScreen)
+    , ("M-S-w", shiftPrevScreen)
+    , ("M-S-r", shiftNextScreen)
 
     -- Toggle float
     , ("M-S-f", toggleFloat)
@@ -109,6 +110,14 @@ myKeybinds =
     -- Resize the master/slave ratio
     , ("M-h", sendMessage Shrink)
     , ("M-l", sendMessage Expand)
+    ]
+
+-- override defaults, I did not like the click to float feature.
+myMouseBindings (XConfig {XMonad.modMask = modm}) = M.fromList $
+    [
+    -- mod-button2, Raise the window to the top of the stack
+    ((modm,button2), (\w -> focus w >> windows W.shiftMaster))
+
     ]
 
 -----------------------
@@ -133,7 +142,7 @@ myManageHook = composeAll
 
 myLayout = smartBorders $ spacingRaw True myBorder True myBorder True $ myLayouts
 
-myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled ||| Full)
+myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled)
   where
     tiled    = reflectHoriz $ Tall nmaster delta ratio
     nmaster  = 1      -- Default number of windows in the master pane
@@ -144,14 +153,14 @@ myLayouts = toggleLayouts (noBorders Full) (tiled ||| Mirror tiled ||| Full)
 -- Status Bars --
 -----------------
 
--- xmobarTop    = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myXmobarPP)
+--xmobarTop    = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc" (pure myXmobarPP)
 --xmobarPrimary = statusBarPropTo "_XMONAD_LOG_1" "xmobar -x 0 ~/.config/xmobar/xmobarrc_primary" (pure $ myXmobarPP (0))
 --xmobarOthers  = statusBarPropTo "_XMONAD_LOG_2" "xmobar -x 1 ~/.config/xmobar/xmobarrc_others" (pure $ myXmobarPP (1))
 --
 --barSpawner :: ScreenId -> IO StatusBarConfig
 --barSpawner 0 = pure $ xmobarPrimary -- two bars on the main screen
 --barSpawner _ = pure $ xmobarOthers
--- barSpawner _ = mempty -- nothing on the rest of the screens
+----barSpawner _ = mempty -- nothing on the rest of the screens
 
 myStatusBarSpawner :: Applicative f => ScreenId -> f StatusBarConfig
 myStatusBarSpawner (S s) = do
@@ -187,34 +196,6 @@ myXmobarPP s = marshallPP s $ def
     yellow   = xmobarColor "#f1fa8c" ""
     red      = xmobarColor "#ff5555" ""
     lowWhite = xmobarColor "#bbbbbb" ""
-
-myXmobarOtherPP :: PP
-myXmobarOtherPP = def
-    { ppSep             = magenta " • "
-    , ppTitleSanitize   = xmobarStrip
-    , ppCurrent         = wrap " " "" . xmobarBorder "Bottom" "#8be9fd" 2
-    , ppHidden          = white . wrap " " ""
-    --, ppHiddenNoWindows = lowWhite . wrap " " ""
-    , ppUrgent          = red . wrap (yellow "!") (yellow "!")
-    , ppOrder           = \[ws, l, _, wins] -> [ws, l, wins]
-    , ppExtras          = [logTitles formatFocused formatUnfocused]
-    }
-  where
-    formatFocused   = wrap (white    "[") (white    "]") . magenta . ppWindow
-    formatUnfocused = wrap (lowWhite "[") (lowWhite "]") . blue    . ppWindow
-
-    -- | Windows should have *some* title, which should not not exceed a
-    -- sane length.
-    ppWindow :: String -> String
-    ppWindow = xmobarRaw . (\w -> if null w then "untitled" else w) . shorten 30
-
-    blue, lowWhite, magenta, red, white, yellow :: String -> String
-    magenta  = xmobarColor "#0f79c6" ""
-    blue     = xmobarColor "#0d93f9" ""
-    white    = xmobarColor "#08f8f2" ""
-    yellow   = xmobarColor "#01fa8c" ""
-    red      = xmobarColor "#0f5555" ""
-    lowWhite = xmobarColor "#0bbbbb" ""
 
 -------------------------
 -- Utilities           --

@@ -43,5 +43,5 @@ Config {
        ],
        sepChar  = "%",
        alignSep = "}{",
-       template = " %_XMONAD_LOG_0% }{ %alsa:default:Master% | %cpu% | %memory% * %swap% | %battery% | %EGPF% | %date% "
+       template = " %_XMONAD_LOG_0% }{ %cpu% | %memory% * %swap% | %battery% | %EGPF% | %date% "
 }

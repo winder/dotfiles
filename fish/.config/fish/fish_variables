@@ -8,10 +8,12 @@ SETUVAR FZF_PREVIEW_FILE_CMD:head\x20\x2dn\x2010
 SETUVAR FZF_TMUX_HEIGHT:40\x25
 SETUVAR __fish_initialized:3100
 SETUVAR _fish_abbr_ag:rg
+SETUVAR _fish_abbr_cat:cat\x20\x2dv
 SETUVAR _fish_abbr_gosrc:cd\x20\x7e/go/src/github\x2ecom/algorand/go\x2dalgorand/
 SETUVAR _fish_abbr_src:cd\x20\x7e/chainlink/
 SETUVAR _fish_abbr_vi:nvim
 SETUVAR _fish_abbr_vim:nvim
+SETUVAR _fish_abbr_ws:cd\x20\x7e/chainlink/ccip\x2dworkspace
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:005fd7

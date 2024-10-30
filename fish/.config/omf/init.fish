@@ -2,18 +2,16 @@ if status --is-interactive
   set -g fish_user_abbreviations
   abbr vi nvim
   abbr vim nvim
+  abbr cat 'cat -v'
   abbr ag rg
   abbr src 'cd ~/chainlink/'
+  abbr ws  'cd ~/chainlink/ccip-workspace'
 end
 
 set -g theme_date_timezone America/New_York
 
 set -gx PATH $PATH /opt/java/jdk-13+33/bin
 set -gx PATH $PATH ~/scripts
-
-set -gx GOROOT /opt/go/cur
-set -gx GOPATH ~/go
-set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
 
 # Add local binaries to path
 set -gx PATH $PATH ~/.local/bin/
@@ -46,4 +44,21 @@ source ~/.secrets.fish
 
 set -gx PATH $PATH /opt/goland/cur/bin
 
+# Chainlink things
 set -gx SSH_AUTH_SOCK /tmp/rustica.socket
+
+# pnpm
+set -gx PNPM_HOME "/home/wwinder/.local/share/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+
+set -gx QMK_HOME "/home/wwinder/code/qmk_firmware"
+set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhost:5432/chainlink_test?sslmode=disable"
+
+source ~/.asdf/asdf.fish
+
+#set -gx GOROOT /opt/go/cur
+#set -gx GOPATH ~/go
+#set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
