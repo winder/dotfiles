@@ -59,6 +59,7 @@ set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhos
 
 source ~/.asdf/asdf.fish
 
+source ~/.asdf/plugins/golang/set-env.fish
 #set -gx GOROOT /opt/go/cur
 #set -gx GOPATH ~/go
 #set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
