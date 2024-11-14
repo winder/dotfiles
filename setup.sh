@@ -11,7 +11,6 @@ sudo apt-get install -y \
   caffeine \
   cifs-utils \
   curl \
-  dunst \
   fish \
   flameshot \
   fzf \
@@ -22,13 +21,11 @@ sudo apt-get install -y \
   libtool \
   lsb-release \
   make \
-  neovim \
   oathtool \
   openssh-server \
   peek \
   qalc \
   ripgrep \
-  rofi-dev \
   s3fs \
   stow \
   software-properties-common \
@@ -41,16 +38,32 @@ sudo apt-get install -y \
   fonts-font-awesome \
   fonts-inconsolata \
   feh \
+  vlc \
+  openjdk-17-jre \
+  google-chrome-stable \
+  delve
+
+# tiling window manager stuff
+sudo apt-get install -y \
+  awesome \
   alacritty \
-  haskell-stack \
+  picom \
+  lxpolkit \
   rofi \
+  rofi-dev \
   arandr \
   pasystray \
   pavucontrol \
-  vlc \
-  openjdk-17-jre \
-  google-chrome-stable
+  playerctl \
+  xbacklight \
+  nitrogen \
+  lxappearance \
+  papirus-icon-theme \
 
+# xmonad
+  #haskell-stack \
+
+# regolith
   #libappindicator3-1 \
   #i3xrocks-battery \
   #i3xrocks-weather \
@@ -90,6 +103,7 @@ stow flameshot
 stow desktop_files
 stow screensaver
 stow 3d_printer
+stow awesomewm
 
 # install rofi-calc
 sudo chown $USER.$USER /opt
@@ -116,8 +130,9 @@ sudo usermod -aG docker $USER
 # fix for "peek": https://github.com/phw/peek/issues/677#issuecomment-759050507
 gsettings set org.gnome.gnome-flashback screencast false || true # in case gnome isn't used
 
-# install golang
-# install language server for neovim
+# TODO install golang
+# TODO install neovim
+# TODO install language server for neovim
 #go install golang.org/x/tools/gopls@latest
 
 # install vscode - https://code.visualstudio.com/docs/setup/linux
