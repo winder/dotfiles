@@ -6,6 +6,30 @@
 #
 # Template
 # https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+env:
+  TERM: xterm-256color
+window:
+  decorations: none
+font:
+  normal:
+    #family: "Hack Nerd Font"
+    #family: "BlexMono Nerd Font"
+    #family: "UbuntuMono Nerd Font"
+    #family: "JetBrainsMonoNerdFont"
+    #family: "FiraMonoNerdFont"
+    #family: "RobotoMonoNerdFont"
+    family: "JetBrainsMonoNerdFont"
+    style: Regular
+  bold:
+    family: "JetBrainsMonoNerdFont"
+    style: Bold
+  italic:
+    family: "JetBrainsMonoNerdFont"
+    style: Italic
+  bold_italic:
+    family: "JetBrainsMonoNerdFont"
+    style: Bold Italic
+  size: 12
 
 colors:
   primary:
