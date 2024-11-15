@@ -55,6 +55,11 @@ Regolith packages
 
 # Packages that I manually install on a new system
 
+Nerd Fonts:
+* https://github.com/ryanoasis/nerd-fonts/
+  * Use the `install.sh` script. 
+  * Ensure `JetBrainsMonoNerdFont` is installed (`~/.local/share/fonts/NerdFonts/`)
+
 * oh-my-fish - `curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
 fish install --path=~/.local/share/omf --config=~/.config/omf`
 * fzf / fish `omf install https://github.com/jethrokuan/fzf`
