@@ -56,7 +56,7 @@ Regolith packages
 # Packages that I manually install on a new system
 
 Nerd Fonts:
-* https://github.com/ryanoasis/nerd-fonts/
+* git clone --depth 1 https://github.com/ryanoasis/nerd-fonts/ && cd nerd-conts && ./install.sh
   * Use the `install.sh` script. 
   * Ensure `JetBrainsMonoNerdFont` is installed (`~/.local/share/fonts/NerdFonts/`)
 

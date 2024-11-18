@@ -1,20 +1,17 @@
 local settings = {}
 
-
 ---------- Theme ----------
-settings.themes = {
-    "PowerArrow_Neon", -- 1
-    "PowerArrow_Genesis", -- 2
-    "PowerArrow_Matcha", -- 3
-    "PowerArrow_RGB", -- 4
-    "PowerArrow_CalmRed" -- 5
-}
+settings.font = "JetBrains Mono Nerd Font 15"
+settings.taglist_font = "JetBrains Mono Nerd Font Bold 15"
+settings.bar_height = 35
+--theme.font                                      = "Mononoki Nerd Font 9"
+--theme.taglist_font                              = "Droid Sans Bold 7"
 
-settings.chosen_theme = settings.themes[1] -- replace number inside of [] with a theme number from the list above
+settings.chosen_theme = "PowerArrow_Genesis"
 
 settings.enableTitlebar = false -- Set to true if you wish to have title bars on top of applications (i.e to have buttons: close, minimise, etc )
 
-settings.gapsize = 20 -- set your gap size here
+settings.gapsize = 8 -- set your gap size here
 
 settings.focusOnHover = true -- set to false if you don't want the window to focused on mouse hover
 
@@ -34,9 +31,6 @@ settings.useLxPolkit = true -- If you would like to use a polkit (without one yo
 
 -- Required Package: flameshot
 settings.useFlameShot = true -- If you want flameshot (screenshotting tool) to auto start
-
-
-
 
 ---------- Get your local weather ID from https://openweathermap.org/ ----------
 
