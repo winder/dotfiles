@@ -45,7 +45,9 @@ source ~/.secrets.fish
 set -gx PATH $PATH /opt/goland/cur/bin
 
 # Chainlink things
-set -gx SSH_AUTH_SOCK /tmp/rustica.socket
+if test -S /tmp/rustica.socket
+  set -gx SSH_AUTH_SOCK /tmp/rustica.socket
+end
 
 # pnpm
 set -gx PNPM_HOME "/home/wwinder/.local/share/pnpm"
