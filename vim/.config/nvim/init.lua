@@ -944,7 +944,10 @@ require("lazy").setup({
 					show_hidden = true,
 					natural_order = true,
 					is_always_hidden = function(name, _)
-						return name == ".." or name == ".git"
+						return name == ".git"
+					end,
+					is_hidden_file = function(name, _)
+						return name ~= ".." and vim.startswith(name, ".")
 					end,
 				},
 				float = {
