@@ -1,5 +1,7 @@
 if status --is-interactive
   set -g fish_user_abbreviations
+  abbr gco git checkout
+  abbr gb git checkout -b
   abbr vi nvim
   abbr vim nvim
   abbr cat 'cat -v'
@@ -59,9 +61,6 @@ end
 set -gx QMK_HOME "/home/wwinder/code/qmk_firmware"
 set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhost:5432/chainlink_test?sslmode=disable"
 
-source ~/.asdf/asdf.fish
-
-source ~/.asdf/plugins/golang/set-env.fish
-#set -gx GOROOT /opt/go/cur
-#set -gx GOPATH ~/go
-#set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
+set -gx GOROOT /opt/go/cur
+set -gx GOPATH ~/go
+set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
