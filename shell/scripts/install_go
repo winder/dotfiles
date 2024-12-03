@@ -1,0 +1,44 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Ensure the script is run with a version parameter
+if [ -z "$1" ]; then
+  echo "Usage: $0 <version>"
+  exit 1
+fi
+
+# Variables
+VERSION="$1"
+ARCH=$(dpkg --print-architecture)
+BASE_DIR="/opt/go"
+DOWNLOAD_URL="https://go.dev/dl/go${VERSION}.linux-${ARCH}.tar.gz"
+TARGET_DIR="${BASE_DIR}/go${VERSION}"
+
+mkdir -p "${BASE_DIR}"
+
+# Change to the target directory
+cd "${BASE_DIR}" || { echo "Failed to navigate to ${BASE_DIR}. Exiting."; exit 1; }
+
+# Download the Golang release
+echo "Downloading Go version ${VERSION} from ${DOWNLOAD_URL}..."
+wget -q "${DOWNLOAD_URL}" -O "go${VERSION}.tar.gz"
+
+# Extract the archive
+echo "Extracting archive..."
+tar -xzf "go${VERSION}.tar.gz"
+
+# Rename the extracted directory
+echo "Renaming 'go' to 'go${VERSION}'..."
+mv go "${TARGET_DIR}"
+
+# Update the symbolic link
+echo "Updating symbolic link 'cur' to point to 'go${VERSION}'..."
+ln -sfn "${TARGET_DIR}" "${BASE_DIR}/cur"
+
+# Cleanup
+echo "Cleaning up..."
+rm -f "go${VERSION}.tar.gz"
+
+echo "Go version ${VERSION} installation completed successfully."
