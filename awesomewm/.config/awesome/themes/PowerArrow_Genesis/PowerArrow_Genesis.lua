@@ -105,7 +105,7 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 
 -- Textclock
-local clock = awful.widget.watch("date +'%a %d %b %R'", 60, function(widget, stdout)
+local clock = awful.widget.watch("date +'%a %d %b %r'", 60, function(widget, stdout)
 	widget:set_markup(" " .. markup.font(theme.font, stdout))
 end)
 

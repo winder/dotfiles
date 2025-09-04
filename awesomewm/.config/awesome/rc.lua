@@ -354,12 +354,12 @@ globalkeys = my_table.join(
 	awful.key({ modkey, "Control" }, "l", function()
 		awful.tag.incncol(-1, nil, true)
 	end, { description = "decrease the number of columns", group = "layout" }),
-	awful.key({ modkey }, "space", function()
-		awful.layout.inc(1)
-	end, { description = "select next", group = "layout" }),
+	--awful.key({ modkey }, "space", function()
+	--	awful.layout.inc(1)
+	--end, { description = "select next", group = "layout" }),
 
-	awful.key({ modkey }, "`", function()
-		awful.util.spawn("rofi -show")
+	awful.key({ modkey }, "space", function()
+		awful.util.spawn("rofi -modi run -show run")
 	end, { description = "Run Rofi", group = "launcher" }),
 
 	awful.key({ modkey, "Control" }, "n", function()
