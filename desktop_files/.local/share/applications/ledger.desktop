@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Ledger
+Icon=/home/will/.local/share/applications/ledger.png
+Exec=/home/will/AppImages/ledger.sh
+Comment=Ledger live desktop app
+Terminal=false
+StartupWMClass=ledger-live
+MimeType=application/ledger
+Categories=USB
+Keywords=ledger
+X-AppImage-Version=2.94.0

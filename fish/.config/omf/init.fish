@@ -10,6 +10,23 @@ if status --is-interactive
   abbr ws  'cd ~/chainlink/ccip-workspace'
 end
 
+# aws_staging_login will set env variables for an AWS session
+function aws_staging_login
+    aws sso login --profile staging
+    aws s3 ls --profile staging
+
+    set cache_file (find ~/.aws/cli/cache -type f -name '*.json' -print0 | xargs -0 ls -t 2>/dev/null | head -n 1)
+
+    if test -n "$cache_file" -a -f "$cache_file"
+        set -gx AWS_ACCESS_KEY_ID (jq -r '.Credentials.AccessKeyId' "$cache_file")
+        set -gx AWS_SECRET_ACCESS_KEY (jq -r '.Credentials.SecretAccessKey' "$cache_file")
+        set -gx AWS_SESSION_TOKEN (jq -r '.Credentials.SessionToken' "$cache_file")
+        echo "AWS credentials exported."
+    else
+        echo "No AWS credentials cache file found."
+    end
+end
+
 set -g theme_date_timezone America/New_York
 
 set -gx PATH $PATH /opt/java/jdk-13+33/bin
@@ -25,17 +42,8 @@ set -gx PATH $PATH ~/.local/bin/
 #set -gx JAVA_HOME $GRAALVM_HOME
 
 
-#set -gx JAVA_HOME /opt/java/jdk1.8.0_202
-#set -gx JAVA_HOME /opt/java/openjdk-11.0.2
-#set -gx JAVA_HOME /opt/java/jdk-11.0.8+10
-#set -gx JAVA_HOME /opt/java/jdk-12.0.2+10
-#set -gx JAVA_HOME /opt/java/jdk-13+33
-#set -gx JAVA_HOME /opt/java/adopt-openj9-14.0.2
-#set -gx JAVA_HOME /opt/java/jdk-15+36
-set -gx JAVA_HOME /opt/java/jdk-16.0.2+7
+set -gx JAVA_HOME /opt/java/jdk-23.0.1
 set -gx PATH $JAVA_HOME/bin $PATH
-
-set -gx PATH /opt/java/gradle-7.1.1/bin $JAVA_HOME/bin $PATH
 
 # Add rust binaries
 set -gx PATH $HOME/.cargo/bin $PATH
@@ -59,8 +67,17 @@ end
 # pnpm end
 
 set -gx QMK_HOME "/home/wwinder/code/qmk_firmware"
-set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhost:5432/chainlink_test?sslmode=disable"
+#set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhost:5432/chainlink_test?sslmode=disable"
 
 set -gx GOROOT /opt/go/cur
 set -gx GOPATH ~/go
 set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
+
+# Add solana cli
+set -gx PATH $PATH "/home/wwinder/.local/share/solana/install/active_release/bin"
+
+# Docker socket
+# docker-desktop
+#set -gx DOCKER_HOST unix:///home/wwinder/.docker/desktop/docker.sock
+# docker engine
+set -gx DOCKER_HOST unix:///var/run/docker.sock

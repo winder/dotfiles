@@ -450,6 +450,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "NoahTheDuke/vim-just", ft = "just" },
 	{ "Bilal2453/luvit-meta", lazy = true },
 	{
 		-- Main LSP Configuration
@@ -912,6 +913,7 @@ require("lazy").setup({
 				"vim",
 				"vimdoc",
 				"go",
+				"just",
 			},
 			-- Autoinstall languages that are not installed
 			auto_install = true,

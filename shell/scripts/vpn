@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo tailscale login --accept-routes --accept-dns --operator=$USER
+tailscale up

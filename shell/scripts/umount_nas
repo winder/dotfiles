@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-sudo umount /media/NAS
+sudo umount /media/NAS_IMPORTANT
+sudo umount /media/NAS_MEDIA
