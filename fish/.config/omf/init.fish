@@ -6,8 +6,7 @@ if status --is-interactive
   abbr vim nvim
   abbr cat 'cat -v'
   abbr ag rg
-  abbr src 'cd ~/chainlink/'
-  abbr ws  'cd ~/chainlink/ccip-workspace'
+  abbr src 'cd ~/code/'
 end
 
 # aws_staging_login will set env variables for an AWS session
@@ -29,6 +28,7 @@ end
 
 set -g theme_date_timezone America/New_York
 
+set -gx PATH $HOME/.local/bin $PATH 
 set -gx PATH $PATH /opt/java/jdk-13+33/bin
 set -gx PATH $PATH ~/scripts
 
@@ -55,9 +55,9 @@ source ~/.secrets.fish
 set -gx PATH $PATH /opt/goland/cur/bin
 
 # Chainlink things
-if test -S /tmp/rustica.socket
+#if test -S /tmp/rustica.socket
   set -gx SSH_AUTH_SOCK /tmp/rustica.socket
-end
+#end
 
 # pnpm
 set -gx PNPM_HOME "/home/wwinder/.local/share/pnpm"
@@ -69,9 +69,13 @@ end
 set -gx QMK_HOME "/home/wwinder/code/qmk_firmware"
 #set -gx CL_DATABASE_URL "postgresql://postgres:thispasswordislongenough@localhost:5432/chainlink_test?sslmode=disable"
 
+# golang
 set -gx GOROOT /opt/go/cur
 set -gx GOPATH ~/go
 set -gx PATH $PATH $GOROOT/bin $GOPATH/bin
+
+# zig
+set -gx PATH $PATH /opt/zig/cur
 
 # Add solana cli
 set -gx PATH $PATH "/home/wwinder/.local/share/solana/install/active_release/bin"
@@ -81,3 +85,5 @@ set -gx PATH $PATH "/home/wwinder/.local/share/solana/install/active_release/bin
 #set -gx DOCKER_HOST unix:///home/wwinder/.docker/desktop/docker.sock
 # docker engine
 set -gx DOCKER_HOST unix:///var/run/docker.sock
+
+set -gx PATH $PATH /opt/zig/cur

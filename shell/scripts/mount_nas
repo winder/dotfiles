@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+sudo mkdir -p /media/{NAS_IMPORTANT,NAS_MEDIA,NAS_TEMP}
 sudo mount -t cifs //192.168.2.222/Important /media/NAS_IMPORTANT -o vers=3.0,user=wwinder,uid=1000,gid=1000
 sudo mount -t cifs //192.168.2.222/Media /media/NAS_MEDIA -o vers=3.0,user=wwinder,uid=1000,gid=1000
 sudo mount -t cifs //192.168.2.222/temp /media/NAS_TEMP -o vers=3.0,user=wwinder,uid=1000,gid=1000

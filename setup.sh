@@ -1,6 +1,7 @@
 set -e
 
 sudo add-apt-repository ppa:yubico/stable
+sudo apt install yubikey-manager
 sudo apt update
 
 # install packages
@@ -71,11 +72,15 @@ sudo apt-get install -y \
 # yubikey // rustica agent // signed commits // rust
 sudo apt install -y \
   libpcsclite-dev \
+  libpcsclite1-dev
   libudev-dev \
   libpam-yubico \
   libpam-u2f \
   cargo \
-  protobuf-compiler
+  protobuf-compiler \
+  libssl-dev \
+  pcscd
+
 
 # install oh my fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
@@ -106,7 +111,7 @@ stow 3d_printer
 stow awesomewm
 
 # install rofi-calc
-sudo chown $USER.$USER /opt
+sudo chown $USER:$USER /opt
 cd /opt
 git clone https://github.com/svenstaro/rofi-calc
 cd rofi-calc
@@ -136,15 +141,15 @@ gsettings set org.gnome.gnome-flashback screencast false || true # in case gnome
 #go install golang.org/x/tools/gopls@latest
 
 # install vscode - https://code.visualstudio.com/docs/setup/linux
-sudo apt-get install -y wget gpg
-wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
-sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
-sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
-rm -f packages.microsoft.gpg
-
-sudo apt install -y apt-transport-https
-sudo apt update
-sudo apt install -y code # or code-insiders
+#sudo apt-get install -y wget gpg
+#wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
+#sudo install -o root -g root -m 644 packages.microsoft.gpg /etc/apt/trusted.gpg.d/
+#sudo sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/trusted.gpg.d/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main" > /etc/apt/sources.list.d/vscode.list'
+#rm -f packages.microsoft.gpg
+#
+#sudo apt install -y apt-transport-https
+#sudo apt update
+#sudo apt install -y code # or code-insiders
 
 # install platformio
 wget https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py -O get-platformio.py
@@ -179,3 +184,24 @@ sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com A1715D88E1DF1F24 4
 sudo apt-get update
 sudo apt-get install git -y
 git --version
+
+# Latest tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
+# neovim
+sudo add-apt-repository -y ppa:neovim-ppa/unstable
+sudo apt install neovim
+
+# slack?
+
+# mullvad
+
+# Download the Mullvad signing key
+sudo curl -fsSLo /usr/share/keyrings/mullvad-keyring.asc https://repository.mullvad.net/deb/mullvad-keyring.asc
+
+# Add the Mullvad repository server to apt
+echo "deb [signed-by=/usr/share/keyrings/mullvad-keyring.asc arch=$( dpkg --print-architecture )] https://repository.mullvad.net/deb/stable stable main" | sudo tee /etc/apt/sources.list.d/mullvad.list
+
+# Install the package
+sudo apt update
+sudo apt install mullvad-vpn

@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Ensure the script is run with a version parameter
+if [ -z "$1" ]; then
+  echo "Usage: $0 <version>"
+  exit 1
+fi
+
+# Variables
+VERSION="$1"
+ARCH="x86_64"
+BASE_DIR="/opt/zig"
+DEFAULT_ARCHIVE_FILE="zig-${ARCH}-linux-${VERSION}"
+DOWNLOAD_URL="https://ziglang.org/download/${VERSION}/${DEFAULT_ARCHIVE_FILE}.tar.xz"
+FOLDER=zig${VERSION}
+TARGET_DIR="${BASE_DIR}/${FOLDER}"
+
+
+#ln -s zig-x86_64-linux-0.15.2 cur
+#ls
+#tar xvf zig-x86_64-linux-0.15.2.tar.xz
+#nvim /home/wwinder/scripts/install_go
+#wget https://ziglang.org/download/0.15.2/zig-x86_64-linux-0.15.2.tar.xz
+
+
+mkdir -p "${BASE_DIR}"
+
+# Change to the target directory
+cd "${BASE_DIR}" || { echo "Failed to navigate to ${BASE_DIR}. Exiting."; exit 1; }
+
+# Download the Golang release
+echo "Downloading Zig version ${VERSION} from ${DOWNLOAD_URL}..."
+wget -q "${DOWNLOAD_URL}" -O "${FOLDER}.tar.xz"
+
+# Extract the archive
+echo "Extracting archive..."
+tar -xf "${FOLDER}.tar.xz"
+
+# Rename the extracted directory
+echo "Renaming '${DEFAULT_ARCHIVE_FILE}' to '${FOLDER}'..."
+mv "${DEFAULT_ARCHIVE_FILE}" "${TARGET_DIR}"
+
+# Update the symbolic link
+echo "Updating symbolic link 'cur' to point to '${TARGET_DIR}'..."
+ln -sfn "${TARGET_DIR}" "${BASE_DIR}/cur"
+
+# Cleanup
+echo "Cleaning up..."
+rm -f "*.tar.xz"
+
+echo "Zig version ${VERSION} installation completed successfully."
