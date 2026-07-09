@@ -19,3 +19,5 @@ source ~/.secrets.bashrc
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
+# Pi
+export PATH="/home/owen/.local/share/pi-node/node-v22.23.1-linux-x64/bin:$PATH"

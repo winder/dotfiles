@@ -18,6 +18,9 @@ local lain = require("lain")
 local freedesktop = require("freedesktop")
 local settings = require("settings")
 
+-- When changing tags, focus on previously focused window.
+require("awful.autofocus")
+
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
 local hotkeys_popup = require("awful.hotkeys_popup").widget
@@ -56,7 +59,7 @@ local altkey = "Mod1"
 local modkey1 = "Control"
 
 -- personal variables
-local terminal = "alacritty"
+local terminal = "kitty"
 local browser = "firefox"
 local editor = os.getenv("EDITOR") or "nano"
 local editor_tui = terminal .. " -e " .. editor
@@ -555,6 +558,17 @@ awful.rules.rules = {
 	{
 		rule_any = { type = { "dialog", "normal" } },
 		properties = { titlebars_enabled = settings.enableTitlebar },
+	},
+	-- Force floating
+	{
+		rule = { class = "firefox" },
+		properties = { floating = false, size = { width = 0.9, height = 0.9 } }, -- Example: Make it tile & 90% size
+		-- Or simply:
+		-- properties = { floating = false }, -- Makes it tile
+	},
+	{
+		rule_any = { type = { "dialog" } },
+		properties = { floating = true, ontop = true, placement = awful.placement.centered },
 	},
 }
 

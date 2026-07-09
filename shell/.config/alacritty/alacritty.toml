@@ -81,5 +81,8 @@ style = "Italic"
 family = "JetBrainsMonoNerdFont"
 style = "Regular"
 
+[shell]
+program = "/usr/bin/fish"
+
 [window]
 decorations = "none"
