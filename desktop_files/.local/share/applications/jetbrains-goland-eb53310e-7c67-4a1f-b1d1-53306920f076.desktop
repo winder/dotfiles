@@ -1,0 +1,14 @@
+[Desktop Entry]
+Name=GoLand 2026.2.0.1
+Exec="/opt/goland/GoLand-2026.1.4/bin/goland" %u
+Version=1.0
+Type=Application
+Categories=Development;IDE;
+Terminal=false
+Icon=jetbrains-goland-eb53310e-7c67-4a1f-b1d1-53306920f076
+X-Icon-Path=/home/owen/.local/share/icons/hicolor/scalable/apps/jetbrains-goland-eb53310e-7c67-4a1f-b1d1-53306920f076.svg
+X-Installed-Icon-Cache-Path=/home/owen/.local/share/icons/hicolor
+X-Icon-Name-Before-Sanitization=jetbrains-goland-eb53310e-7c67-4a1f-b1d1-53306920f076.desktop.icon.svg
+Comment=An IDE for Go and Web
+StartupWMClass=jetbrains-goland
+StartupNotify=true

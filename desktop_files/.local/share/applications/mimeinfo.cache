@@ -1,0 +1,21 @@
+[MIME Cache]
+application/ledger=ledger.desktop;
+application/sql=DBeaver.desktop;
+application/x-cura=cura.desktop;
+application/x-openscad=openscad.desktop;
+application/x-orcaslicer=orcaslicer.desktop;
+application/x-slic3r=slic3r.desktop;
+application/x-xpinstall=chrome-home.desktop;chrome-work.desktop;
+application/xhtml+xml=chrome-home.desktop;chrome-work.desktop;
+application/xml=chrome-home.desktop;chrome-work.desktop;
+text/html=chrome-home.desktop;chrome-work.desktop;
+text/plain=whatsapp-webapp.desktop;
+text/x-arduino=arduino-arduinoide.desktop;
+text/xml=chrome-home.desktop;chrome-work.desktop;
+x-scheme-handler/chrome=chrome-home.desktop;chrome-work.desktop;
+x-scheme-handler/ftp=chrome-home.desktop;chrome-work.desktop;
+x-scheme-handler/http=chrome-home.desktop;chrome-work.desktop;
+x-scheme-handler/https=chrome-home.desktop;chrome-work.desktop;
+x-scheme-handler/jetbrains=jetbrainsd.desktop;
+x-scheme-handler/steam=steam.desktop;
+x-scheme-handler/steamlink=steam.desktop;
