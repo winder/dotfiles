@@ -3,7 +3,7 @@
 Name=WhatsApp
 GenericName=WhatsApp
 Comment=WhatApp desktop webapp
-Exec=/usr/bin/google-chrome --app=https://web.whatsapp.com/
+Exec=/usr/bin/chromium-browser --app=https://web.whatsapp.com/
 Terminal=false
 Type=Application
 StartupNotify=true
