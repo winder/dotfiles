@@ -6,7 +6,7 @@ if status --is-interactive
   abbr vim nvim
   abbr cat 'cat -v'
   abbr ag rg
-  abbr src 'cd ~/code/'
+  abbr src 'cd ~/id/'
 end
 
 # aws_staging_login will set env variables for an AWS session
@@ -87,3 +87,5 @@ set -gx PATH $PATH "/home/wwinder/.local/share/solana/install/active_release/bin
 set -gx DOCKER_HOST unix:///var/run/docker.sock
 
 set -gx PATH $PATH /opt/zig/cur
+
+set -gx PATH $PATH $HOME/.config/.foundry/bin

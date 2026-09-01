@@ -1,6 +1,7 @@
 [user]
 	email = wwinder.unh@gmail.com
 	name = Will Winder
+	signingkey = /home/will/.ssh/id_gh_signer
 [core]
 	editor = nvim
 	filemode = false
@@ -14,3 +15,7 @@
 	autoSetupRemote = true
 [travis]
 	slug = algorand/go-algorand
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
